@@ -27,6 +27,13 @@ Install all required libraries, including PyTorch configured for CUDA 11.8, usin
 conda activate dgm
 pip install -r requirements.txt
 ```
+> [!NOTE]
+> **Hardware & Environment Specifications**
+> All experiments, training, and evaluations in this project were conducted on the following hardware environment:
+> - **OS**: Ubuntu 22.04
+> - **CPU**: Intel(R) Xeon(R) Gold 5220R CPU @ 2.20GHz
+> - **GPU**: 1x NVIDIA GeForce RTX 3090
+> - **CUDA / cuDNN**: 11.8 / 9.1.0 (90100)
 
 ## Models & Dataset
 ### Pre-trained Model
@@ -68,3 +75,5 @@ python get_latent.py --image_dir ./dataset/images_sampled --latent_dir ./dataset
 
 > [!NOTE]
 > All scripts are configured with default paths, but you can easily override them using the provided arguments as shown above.
+
+### Train
