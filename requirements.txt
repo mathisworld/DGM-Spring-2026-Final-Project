@@ -1,0 +1,15 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+
+accelerate>=1.13.0
+diffuser>=0.0.1
+diffusers>=0.37.1
+matplotlib>=3.10.9
+numpy<2.0
+nvitop>=1.6.2
+opencv-contrib-python<4.11
+torch==2.7.0
+torchaudio==2.7.0
+torchmetrics[image]>=1.0.3
+torchvision==0.22.0
+tqdm>=4.66.5
+youtube-dl>=2021.12.17
