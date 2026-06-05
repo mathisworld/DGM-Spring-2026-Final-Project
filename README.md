@@ -34,6 +34,7 @@ pip install -r requirements.txt
 > - **CPU**: Intel(R) Xeon(R) Gold 5220R CPU @ 2.20GHz
 > - **GPU**: 1x NVIDIA GeForce RTX 3090
 > - **CUDA / cuDNN**: 11.8 / 9.1.0 (90100)
+> - **Fixed Seed**: 42
 
 ## Models & Dataset
 ### Pre-trained Model
@@ -50,7 +51,7 @@ mkdir dataset/videos
 tar -zxvf celebvhq.tar.gz -C dataset/
 ```
 
-## Train
+## Train & Inference
 ### Preprocessing
 Before training, the raw dataset must be processed into images and then encoded into latent representations for the Latent Diffusion Model.<br>
 Please run the following scripts in order. <br>
@@ -77,3 +78,15 @@ python get_latent.py --image_dir ./dataset/images_sampled --latent_dir ./dataset
 > All scripts are configured with default paths, but you can easily override them using the provided arguments as shown above.
 
 ### Train
+Once the dataset is preprocessed into latents, you can start fine-tuning the UNet of the Latent Diffusion Model.
+```
+mkdir saved_models
+CUDA_VISIBLE_DEVICES=6 python train.py --latent_dir ./dataset/latents --output_dir ./saved_models/exp1
+```
+
+### Inference
+To generate the final 1,000 images for the leaderboard submission, we use the fine-tuned UNet with a **DDIM Scheduler** for faster and higher-quality sampling.
+```
+mkdir saved_imgs
+CUDA_VISIBLE_DEVICES=6 python inference.py local_model_path ./saved_models/exp --output_dir ./saved_imgs/exp1
+```
