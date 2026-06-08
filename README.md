@@ -86,8 +86,9 @@ CUDA_VISIBLE_DEVICES=6 python train.py --latent_dir ./dataset/latents --output_d
 ```
 
 ### Inference
-To generate the final 1,000 images for the leaderboard submission, we use the fine-tuned UNet with a **DDIM Scheduler** for faster and higher-quality sampling.
+To generate the final 1,000 images for the leaderboard submission, we use the fine-tuned UNet with a **DDIM Scheduler** for faster and higher-quality sampling. <br>
+You can download the pre-trained weights from this [**Google Drive link**](https://drive.google.com/drive/folders/1EfsaJonwN19hjZMNeIZfLjgI0moQucou?usp=sharing).
 ```
 mkdir saved_imgs
-CUDA_VISIBLE_DEVICES=6 python inference.py local_model_path ./saved_models/exp --output_dir ./saved_imgs/exp1
+CUDA_VISIBLE_DEVICES=6 python inference.py local_model_path ./saved_models/exp1 --output_dir ./saved_imgs/exp1
 ```
